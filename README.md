@@ -55,6 +55,57 @@ Y = df.iloc[:, -1].values    # all rows, last column -> shape (n_samples,)
 print("X (features):", X.flatten())
 print("Y (targets):", Y)
 
+# 3) Split data into training and testing sets
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=1/3, random_state=0)
+print("\nTraining samples:", len(X_train), " Testing samples:", len(X_test))
+
+# 4) Create and train the model
+regressor = LinearRegression()
+regressor.fit(X_train, Y_train)   # fit on training data
+
+# 5) Predict on the test set
+Y_pred = regressor.predict(X_test)
+print("\nPredicted values:", np.round(Y_pred, 2))
+print("Actual values   :", Y_test)
+
+# 6) Plot training results
+plt.figure(figsize=(6,4))
+plt.scatter(X_train, Y_train, color="orange", label="Training data")
+plt.plot(X_train, regressor.predict(X_train), color="red", label="Fitted line")
+plt.title("Hours vs Scores (Training set)")
+plt.xlabel("Hours")
+plt.ylabel("Scores")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# 7) Plot testing results (use X_test sorted for a nicer line)
+order = np.argsort(X_test.flatten())
+X_test_sorted = X_test.flatten()[order]
+Y_test_sorted = Y_test[order]
+Y_pred_sorted = Y_pred[order]
+plt.figure(figsize=(6,4))
+plt.scatter(X_test, Y_test, color="blue", label="Test data")
+plt.plot(X_test_sorted, Y_pred_sorted, color="green", label="Predictions")
+plt.title("Hours vs Scores (Testing set)")
+plt.xlabel("Hours")
+plt.ylabel("Scores")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# 8) Evaluation metrics
+mae = mean_absolute_error(Y_test, Y_pred)
+mse = mean_squared_error(Y_test, Y_pred)
+rmse = np.sqrt(mse)
+print("\nMean Absolute Error (MAE):", mae)
+print("Mean Squared Error (MSE):", mse)
+print("Root Mean Squared Error (RMSE):", rmse)
+
+# 9) Example: predict for new students
+new_hours = np.array([[2.5], [8.0]])   # shape must be (n_samples, 1)
+pred_new = regressor.predict(new_hours)
+print("\nPredictions for new hours", new_hours.flatten(), "=>", np.round(pred_new,2))
 ```
 
 ## Output:
@@ -68,7 +119,9 @@ print("Y (targets):", Y)
 
 <img width="683" height="487" alt="image" src="https://github.com/user-attachments/assets/00cd6f80-aa8e-4c11-adb3-ac473eab6be9" />
 
-<img width="1245" height="814" alt="image" src="https://github.com/user-attachments/assets/698b0a8b-722a-4096-9d80-38027a934c86" />
+<img width="522" height="95" alt="image" src="https://github.com/user-attachments/assets/46e29bc5-cd01-4b57-b79f-e11986c541ca" />
+
+<img width="522" height="48" alt="image" src="https://github.com/user-attachments/assets/6d9fbcbf-f2b9-4de0-bfef-d69c779ce6d2" />
 
 
 
