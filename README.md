@@ -26,7 +26,7 @@ To write a program to predict the marks scored by a student using the simple lin
 
 9. Step 9: Predict Marks for custom input
 ## Program:
-```
+
 /*
 Program to implement the simple linear regression model for predicting the marks scored.
 Developed by: S LOGESHWAR
@@ -56,7 +56,6 @@ print("X (features):", X.flatten())
 print("Y (targets):", Y)
 
 
-```
 
 ## Output:
 <img width="1245" height="814" alt="image" src="https://github.com/user-attachments/assets/698b0a8b-722a-4096-9d80-38027a934c86" />
