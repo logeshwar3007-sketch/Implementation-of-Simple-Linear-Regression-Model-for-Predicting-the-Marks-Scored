@@ -26,7 +26,7 @@ To write a program to predict the marks scored by a student using the simple lin
 
 9. Step 9: Predict Marks for custom input
 ## Program:
-
+```
 /*
 Program to implement the simple linear regression model for predicting the marks scored.
 Developed by: S LOGESHWAR
@@ -46,7 +46,7 @@ df = pd.read_csv('exp_2_dataset_student_scores.csv')   # CSV should have two col
 print("First 5 rows:\n", df.head(), "\n")
 print("Last 5 rows:\n", df.tail(), "\n")
 
-<img width="187" height="341" alt="image" src="https://github.com/user-attachments/assets/8c99c35f-77a8-4bbf-8e6e-ec8fe442adb0" />
+
 
 # 2) Prepare input (X) and output (Y)
 # Assume CSV columns: Hours (feature) and Scores (target)
@@ -55,9 +55,11 @@ Y = df.iloc[:, -1].values    # all rows, last column -> shape (n_samples,)
 print("X (features):", X.flatten())
 print("Y (targets):", Y)
 
-
+```
 
 ## Output:
+<img width="187" height="341" alt="image" src="https://github.com/user-attachments/assets/8c99c35f-77a8-4bbf-8e6e-ec8fe442adb0" />
+
 <img width="1245" height="814" alt="image" src="https://github.com/user-attachments/assets/698b0a8b-722a-4096-9d80-38027a934c86" />
 
 
